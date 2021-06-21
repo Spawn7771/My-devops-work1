@@ -8,8 +8,6 @@ passwd_db1=1
 passwd_db2=1
 db1=test1
 db2=test2
-#pass_server1=vagrant
-#pass_server2=vagrant
 
 ssh vagrant@$server1 "mysqldump -u$user_db1 -p$passwd_db1 $db1 > ~/test1dump.sql"
 scp -3 vagrant@$server1:~/test1dump.sql vagrant@$server2:~
