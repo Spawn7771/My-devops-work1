@@ -16,4 +16,4 @@ stage_pass=1
 stage_db=test2
 
 mysqldump -u$production_login -h $production_host -p$production_pass $prod_db | gzip > ~/prod_dump_`date +"%H%M%S"`.sql.gz
-mysqldump -u$stage_login -p$stage_pass $stage_db | gzip > ~/stage_dump_`date +"%H%M%S"`.sql.gz && gunzip < ~/prod_dump_`date +"%H%M%S"`.sql.gz | mysql -u$stage_login -p$stage_pass $stage_db 
+mysqldump -u$stage_login -h $stage_host -p$stage_pass $stage_db | gzip > ~/stage_dump_`date +"%H%M%S"`.sql.gz && gunzip < ~/prod_dump_`date +"%H%M%S"`.sql.gz | mysql -u$stage_login -h $stage_host -p$stage_pass $stage_db 
